@@ -17,6 +17,7 @@ builder.Services.AddAuthentication(options =>
         options.SaveTokens = true;
         options.ResponseType = "code";
         options.UsePkce = true;
+        options.GetClaimsFromUserInfoEndpoint = true;
     });
 
 builder.Services.AddAuthorization();

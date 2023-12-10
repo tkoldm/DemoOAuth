@@ -118,24 +118,25 @@ using (var scope = app.Services.CreateScope())
 
 app.MapGet("/authorize", async (HttpContext context, [FromServices] DbContextSchema schema) =>
 {
-    var principal = (await context.AuthenticateAsync(YandexAuthenticationDefaults.AuthenticationScheme))?.Principal;
+    var principal = (await context.AuthenticateAsync(YandexAuthenticationDefaults.AuthenticationScheme)).Principal;
     if (principal is null)
     {
         return Results.Challenge(properties: null, new[] { YandexAuthenticationDefaults.AuthenticationScheme });
     }
 
-    var identifier = principal.FindFirst(ClaimTypes.NameIdentifier)!.Value;
+    var identifier = principal.FindFirst(ClaimTypes.Name)!.Value;
 
     var identity = new ClaimsIdentity(TokenValidationParameters.DefaultAuthenticationType);
     identity.AddClaim(new Claim(OpenIddictConstants.Claims.Subject, identifier));
     identity.AddClaim(
         new Claim(OpenIddictConstants.Claims.Name, identifier).SetDestinations(OpenIddictConstants.Destinations
-            .AccessToken));
+            .AccessToken, OpenIddictConstants.Destinations.IdentityToken));
 
-    foreach (var claim in principal.Claims)
+    foreach (var principalClaim in principal.Claims)
     {
-        new Claim(claim.Type, claim.Value).SetDestinations(OpenIddictConstants.Destinations
-            .AccessToken);
+        var claim = new Claim(principalClaim.Type, principalClaim.Value, principalClaim.ValueType).SetDestinations(OpenIddictConstants.Destinations
+            .AccessToken, OpenIddictConstants.Destinations.IdentityToken);
+        identity.AddClaim(claim);
     }
 
     return Results.SignIn(new ClaimsPrincipal(identity), properties: null,

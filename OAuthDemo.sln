@@ -7,6 +7,9 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "IdentityServer4Demo", "IdentityServer4Demo", "{CEDE5150-C9E6-41D0-B870-C3AFF7ACC8D6}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "KeycloakDemo", "KeycloakDemo", "{39F6AD8C-90E9-429D-A93E-FBC73C2D4E5C}"
+	ProjectSection(SolutionItems) = preProject
+		src\KeycloakDemo\docker-compose.yaml = src\KeycloakDemo\docker-compose.yaml
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenIddictDemo.Server", "src\OpenIddictDemo\OpenIddictDemo.Server\OpenIddictDemo.Server.csproj", "{73753081-297E-49F4-8E61-A8D97E96BB6C}"
 EndProject
@@ -15,6 +18,8 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Shared", "Shared", "{E2D646BB-5DB7-46D4-A4AF-FC7144AE31CF}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infrastructure", "src\Shared\Infrastructure\Infrastructure.csproj", "{6866CE2E-C667-4358-907B-0A0B96C28E66}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KeycloakDemo.Client", "src\KeycloakDemo\KeycloakDemo.Client\KeycloakDemo.Client.csproj", "{DDB89E19-2A44-4332-950A-D803B7D57D3A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -29,6 +34,7 @@ Global
 		{D475E9A4-73BF-4F38-A29E-1B9552F7B378} = {C49EAF34-BE7E-48C4-AAF3-708F06EBBEA2}
 		{E2D646BB-5DB7-46D4-A4AF-FC7144AE31CF} = {05EF6C11-5787-41D1-9373-EC0F240E8CF7}
 		{6866CE2E-C667-4358-907B-0A0B96C28E66} = {E2D646BB-5DB7-46D4-A4AF-FC7144AE31CF}
+		{DDB89E19-2A44-4332-950A-D803B7D57D3A} = {39F6AD8C-90E9-429D-A93E-FBC73C2D4E5C}
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{73753081-297E-49F4-8E61-A8D97E96BB6C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -43,5 +49,9 @@ Global
 		{6866CE2E-C667-4358-907B-0A0B96C28E66}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6866CE2E-C667-4358-907B-0A0B96C28E66}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6866CE2E-C667-4358-907B-0A0B96C28E66}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DDB89E19-2A44-4332-950A-D803B7D57D3A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DDB89E19-2A44-4332-950A-D803B7D57D3A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DDB89E19-2A44-4332-950A-D803B7D57D3A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DDB89E19-2A44-4332-950A-D803B7D57D3A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

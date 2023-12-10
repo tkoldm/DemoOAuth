@@ -6,15 +6,15 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddAuthentication(options =>
     {
         options.DefaultScheme = CookieAuthenticationDefaults.AuthenticationScheme;
-        options.DefaultChallengeScheme = "KeycloackIdentity";
+        options.DefaultChallengeScheme = "IdentityServerIdentity";
     })
     .AddCookie()
-    .AddOpenIdConnect("KeycloackIdentity", options =>
+    .AddOpenIdConnect("IdentityServerIdentity", options =>
     {
         options.RequireHttpsMetadata = false;
-        options.ClientId = "Keycloack.Client";
+        options.ClientId = "IdentityServer.Client";
         options.ClientSecret = "4rmIfl0CejC63ubVtl5QonqEUkrgooAi";
-        options.Authority = "http://localhost:8080/realms/master";
+        options.Authority = "http://localhost:5071";
         options.SaveTokens = true;
         options.ResponseType = "code";
         options.UsePkce = true;

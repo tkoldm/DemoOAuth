@@ -1,6 +1,5 @@
 using System.Security.Claims;
 using AspNet.Security.OAuth.Yandex;
-using Infrastructure;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Mvc;
@@ -8,6 +7,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using OpenIddict.Abstractions;
 using OpenIddict.Server.AspNetCore;
+using OpenIddictDemo.Server;
 
 var configuration = new ConfigurationBuilder()
     .AddJsonFile("appsettings.json", true)
@@ -17,7 +17,7 @@ var configuration = new ConfigurationBuilder()
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddSingleton(new DbContextSchema("open_id_dict"));
-builder.Services.AddDbContext<SharedDbContext>(options =>
+builder.Services.AddDbContext<OpenIddictDbContext>(options =>
 {
     options.UseNpgsql(configuration.GetConnectionString("DefaultConnection"),
         b => b.MigrationsAssembly("OpenIddictDemo.Server"));
@@ -42,7 +42,7 @@ builder.Services.AddOpenIddict()
     .AddCore(options =>
     {
         options.UseEntityFrameworkCore()
-            .UseDbContext<SharedDbContext>();
+            .UseDbContext<OpenIddictDbContext>();
     })
     .AddServer(options =>
     {

@@ -1,14 +1,14 @@
 using Microsoft.EntityFrameworkCore;
 
-namespace Infrastructure;
+namespace OpenIddictDemo.Server;
 
 public record DbContextSchema(string Schema);
 
-public class SharedDbContext : DbContext
+public class OpenIddictDbContext : DbContext
 {
     private readonly string? _schema;
 
-    public SharedDbContext(DbContextOptions<SharedDbContext> options, DbContextSchema schema)
+    public OpenIddictDbContext(DbContextOptions<OpenIddictDbContext> options, DbContextSchema schema)
         : base(options)
     {
         _schema = schema.Schema ?? "public";

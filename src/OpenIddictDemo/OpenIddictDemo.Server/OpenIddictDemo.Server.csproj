@@ -20,8 +20,4 @@
       <PackageReference Include="OpenIddict.EntityFrameworkCore" Version="4.10.1" />
     </ItemGroup>
 
-    <ItemGroup>
-      <ProjectReference Include="..\..\Shared\Infrastructure\Infrastructure.csproj" />
-    </ItemGroup>
-
 </Project>
